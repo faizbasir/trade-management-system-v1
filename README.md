@@ -1,5 +1,6 @@
 # trade-management-system-v1
 
+```
 src
 ├── model
 │   ├── Trade
@@ -17,3 +18,4 @@ src
 │   ├── TradeStore
 │
 └── Main
+```
