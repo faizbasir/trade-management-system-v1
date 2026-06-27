@@ -1,6 +1,7 @@
 package src.model;
 
 import src.enums.TradeStatus;
+import src.util.TradeUtil;
 
 import java.math.BigDecimal;
 
@@ -35,6 +36,11 @@ public class EquityTrade extends Trade{
                 ", price=" + price +
                 ", exchange='" + exchange + '\'' + ',' +
                 super.toString() + "} ";
+    }
+
+    @Override
+    public boolean validate() {
+        return TradeUtil.validateQuantity(super.getQuantity()) && TradeUtil.validatePrice(this.price) && TradeUtil.validateTicker(this.ticker);
     }
 
     public BigDecimal calculateNotional(){

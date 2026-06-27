@@ -2,6 +2,8 @@ package src.model;
 
 import src.enums.Direction;
 import src.enums.TradeStatus;
+import src.util.CcyUtil;
+import src.util.TradeUtil;
 
 import java.math.BigDecimal;
 
@@ -29,6 +31,7 @@ public class FXTrade extends Trade{
         return direction;
     }
 
+    @Override
     public BigDecimal calculateNotional(){
         return this.rate.multiply(BigDecimal.valueOf(super.getQuantity()));
     }
@@ -40,5 +43,10 @@ public class FXTrade extends Trade{
                 ", rate=" + rate +
                 ", direction=" + direction + ',' +
                 super.toString() + "} ";
+    }
+
+    @Override
+    public boolean validate() {
+        return TradeUtil.validateQuantity(super.getQuantity()) && TradeUtil.validateDirection(this.direction) && TradeUtil.validatePrice(this.rate) && CcyUtil.validateCcyPair(this.ccyPair);
     }
 }

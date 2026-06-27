@@ -2,7 +2,9 @@ package src.model;
 
 import src.enums.TradeStatus;
 
-public class Trade {
+import java.math.BigDecimal;
+
+public abstract class Trade {
     private String tradeId;
     private String traderId;
     private double quantity;
@@ -41,6 +43,14 @@ public class Trade {
         this.status = status;
     }
 
+    public void setTradeId(String tradeId) {
+        this.tradeId = tradeId;
+    }
+
+    public void setTradeDateTime(String tradeDateTime){
+        this.tradeDateTime = tradeDateTime;
+    }
+
     @Override
     public String toString() {
         return " tradeId='" + tradeId + '\'' +
@@ -49,4 +59,8 @@ public class Trade {
                 ", tradeDateTime='" + tradeDateTime + '\'' +
                 ", status=" + status;
     }
+
+    public abstract boolean validate();
+
+    public abstract BigDecimal calculateNotional();
 }
