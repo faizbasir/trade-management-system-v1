@@ -1,9 +1,11 @@
 package src.util;
 
+import src.enums.Direction;
 import src.enums.TradeStatus;
 import src.enums.TradeType;
 import src.model.Trade;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 public class TradeUtil {
@@ -19,30 +21,11 @@ public class TradeUtil {
         return type.name() + "-" + String.format("%03d", counter == 0 ? 1 : counter + 1);
     }
 
-    public static void fillTrade(List<Trade> tradeRepo, String tradeId){
-        for (Trade trade : tradeRepo) {
-            if (tradeId.equals(trade.getTradeId())){
-                trade.setStatus(TradeStatus.FILLED);
-            }
-        }
-    }
+    public static boolean validateQuantity(double quantity){return quantity > 0;}
 
-    public static void removeTrade(List<Trade> tradeRepo, String tradeId){
-        for (Trade trade : tradeRepo){
-            if (trade.getTradeId().equals(tradeId) && trade.getStatus() != TradeStatus.FILLED){
-                tradeRepo.remove(trade);
-            } else {
-                throw new IllegalArgumentException("unable to remove trade");
-            }
-        }
-    }
+    public static boolean validatePrice(BigDecimal price){return price.compareTo(BigDecimal.ZERO) > 0;}
 
-    public static Trade getTradeById(List<Trade> tradeRepo, String tradeId){
-        for (Trade trade: tradeRepo){
-            if (trade.getTradeId().equals(tradeId)){
-                return trade;
-            }
-        }
-        throw new IllegalArgumentException("Trade not found");
-    }
+    public static boolean validateDirection(Direction direction){return direction == Direction.BUY || direction == Direction.SELL;}
+
+    public static boolean validateTicker(String ticker){return !ticker.isEmpty();}
 }
