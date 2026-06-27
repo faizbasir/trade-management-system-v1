@@ -38,7 +38,7 @@ public class FXTrade extends Trade{
         return "FXTrade{" +
                 "ccyPair='" + ccyPair + '\'' +
                 ", rate=" + rate +
-                ", direction=" + direction +
-                "} " + super.toString();
+                ", direction=" + direction + ',' +
+                super.toString() + "} ";
     }
 }

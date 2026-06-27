@@ -33,8 +33,8 @@ public class EquityTrade extends Trade{
         return "EquityTrade{" +
                 "ticker='" + ticker + '\'' +
                 ", price=" + price +
-                ", exchange='" + exchange + '\'' +
-                "} " + super.toString();
+                ", exchange='" + exchange + '\'' + ',' +
+                super.toString() + "} ";
     }
 
     public BigDecimal calculateNotional(){
