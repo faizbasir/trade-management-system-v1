@@ -43,12 +43,10 @@ public class Trade {
 
     @Override
     public String toString() {
-        return "Trade{" +
-                "tradeId='" + tradeId + '\'' +
+        return " tradeId='" + tradeId + '\'' +
                 ", traderId='" + traderId + '\'' +
                 ", quantity=" + quantity +
                 ", tradeDateTime='" + tradeDateTime + '\'' +
-                ", status=" + status +
-                '}';
+                ", status=" + status;
     }
 }
